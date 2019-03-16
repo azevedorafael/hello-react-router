@@ -1,11 +1,12 @@
 'use strict'
 
 import React, { PureComponent } from 'react'
+import { BrowserRouter, Link, Route } from 'react-router-dom'
 
 import './css/style.css'
 
 class App extends PureComponent {
-  constructor () {
+  constructor() {
     super()
     this.state = {
       title: '...',
@@ -13,7 +14,7 @@ class App extends PureComponent {
     }
   }
 
-  getTitle () {
+  getTitle() {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve('My app with async / await!')
@@ -21,7 +22,7 @@ class App extends PureComponent {
     })
   }
 
-  async componentDidMount () {
+  async componentDidMount() {
     const title = await import('components/title')
 
     this.setState({
@@ -30,13 +31,23 @@ class App extends PureComponent {
     })
   }
 
-  render () {
+  render() {
     return (
-      <div>
-        <this.state.Component>{this.state.title}</this.state.Component>
-      </div>
+      <BrowserRouter>
+        <div>
+          <this.state.Component>{this.state.title}</this.state.Component>
+
+          <Link to='/sobre'>Sobre</Link>
+
+          <Route path='/sobre' component={Sobre} />
+        </div>
+      </BrowserRouter>
     )
   }
 }
+
+const Sobre = () => (
+  <h1>Sobre</h1>
+)
 
 export default App
