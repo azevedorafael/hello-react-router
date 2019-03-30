@@ -1,7 +1,7 @@
 'use strict'
 
 import React, { PureComponent } from 'react'
-import { BrowserRouter, Link, Route } from 'react-router-dom'
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom'
 
 import './css/style.css'
 import { Li } from 'glamorous';
@@ -17,14 +17,21 @@ class App extends PureComponent {
             <li><Link to='/blog'>Blog</Link></li>
           </ul>
 
-          <Route exact path='/' component={Home} />
-          <Route path='/sobre' component={Sobre} />
-          <Route path='/blog' component={Blog} />
+          <Switch>
+            <Route exact path='/' component={Home} />
+            <Route path='/sobre' component={Sobre} />
+            <Route path='/blog' component={Blog} />
+            <Route component={Error404} />
+          </Switch>
         </div>
       </BrowserRouter>
     )
   }
 }
+
+const Error404 = () => (
+  <h1>Página não econtrada</h1>
+)
 
 const Home = () => (
   <h1>Home</h1>
