@@ -50,6 +50,8 @@ const Home = () => <h1>Home</h1>;
 
 const Page = ({ match }) => <h1>{match.url}</h1>;
 
+const numberOfPosts = 2;
+
 const Blog = () => (
   <div>
     <h1>Blog</h1>
@@ -64,7 +66,11 @@ const Blog = () => (
     </ul>
 
     <Switch>
-      <Route exact path="/blog" component={NoPosts} />
+      <Route
+        exact
+        path="/blog"
+        render={() => <NoPosts numberOfPosts={numberOfPosts} />}
+      />
       <Route path="/blog/:post(post-[12])" component={Post} />
       <Route component={Post404} />
     </Switch>
@@ -79,6 +85,8 @@ const Post = ({ match }) => (
   </div>
 );
 
-const NoPosts = () => <p>Selecione um post</p>;
+const NoPosts = ({ numberOfPosts }) => (
+  <p>Selecione um dos {numberOfPosts} post</p>
+);
 
 export default App;
