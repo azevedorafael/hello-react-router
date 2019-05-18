@@ -4,7 +4,6 @@ import React, { PureComponent } from "react";
 import { BrowserRouter, NavLink, Route, Switch } from "react-router-dom";
 
 import "./css/style.css";
-import { Li } from "glamorous";
 
 class App extends PureComponent {
   render() {
@@ -33,6 +32,9 @@ class App extends PureComponent {
             <li>
               <NavLink to="/blog">Blog</NavLink>
             </li>
+            <li>
+              <a href="#informações-do-site">Informações do site</a>
+            </li>
           </ul>
 
           <Switch>
@@ -41,6 +43,10 @@ class App extends PureComponent {
             <Route path="/blog" component={Blog} />
             <Route component={Error404} />
           </Switch>
+
+          <div id="informações-do-site" style={{ margin: "1000px 0" }}>
+            <h2>Informações do site</h2>
+          </div>
         </div>
       </BrowserRouter>
     );
