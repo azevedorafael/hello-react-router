@@ -12,7 +12,14 @@ class App extends PureComponent {
         <div>
           <ul>
             <li>
-              <NavLink to="/" exact>
+              <NavLink
+                to={{
+                  pathname: "/",
+                  state: { id: "home" },
+                  search: "?name=daciuk"
+                }}
+                exact
+              >
                 Home
               </NavLink>
             </li>
