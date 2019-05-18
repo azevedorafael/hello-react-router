@@ -17,10 +17,13 @@ class App extends PureComponent {
                 Home
               </NavLink>
             </li>
-            <li>
+            {/* <li>
               <NavLink activeClassName="active-link" to="/sobre">
                 Sobre
               </NavLink>
+            </li> */}
+            <li>
+              <Route path="/sobre">{() => <a href="/sobre">Sobre</a>}</Route>
             </li>
             <li>
               <NavLink activeStyle={{ color: "red" }} to="contato">
